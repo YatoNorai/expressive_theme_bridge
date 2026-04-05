@@ -53,7 +53,7 @@ class ExpressiveComponentThemes extends ThemeExtension<ExpressiveComponentThemes
     }
 
     return ExpressiveComponentThemes(
-      cardRadius: resolveDouble(const ['cardRadius', 'card_radius'], 28),
+      cardRadius: resolveDouble(const ['cardRadius', 'card_radius'], 5),
       cardElevation: resolveDouble(const ['cardElevation', 'card_elevation'], 1),
       buttonRadius: resolveDouble(const ['buttonRadius', 'button_radius'], 20),
       buttonElevation: resolveDouble(const ['buttonElevation', 'button_elevation'], 1),
@@ -64,7 +64,7 @@ class ExpressiveComponentThemes extends ThemeExtension<ExpressiveComponentThemes
       snackBarElevation: resolveDouble(const ['snackBarElevation', 'snack_bar_elevation'], 3),
       chipRadius: resolveDouble(const ['chipRadius', 'chip_radius'], 999),
       dividerThickness: resolveDouble(const ['dividerThickness', 'divider_thickness'], 1),
-      listTileRadius: resolveDouble(const ['listTileRadius', 'list_tile_radius'], 16),
+      listTileRadius: resolveDouble(const ['listTileRadius', 'list_tile_radius'], 5),
       fabElevation: resolveDouble(const ['fabElevation', 'fab_elevation'], 3),
       progressIndicatorHeight: resolveDouble(const ['progressIndicatorHeight', 'progress_indicator_height'], 4),
     );
@@ -447,10 +447,10 @@ extension ExpressiveThemeVariantX on ExpressiveThemeVariant {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(components.listTileRadius),
         ),
-        /* contentPadding: EdgeInsets.symmetric(
+        contentPadding: EdgeInsets.symmetric(
           horizontal: tokens.spacing16,
           vertical: tokens.spacing4,
-        ), */
+        ),
       ),
       progressIndicatorTheme: ProgressIndicatorThemeData(
         color: scheme.primary,
