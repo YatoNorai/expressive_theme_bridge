@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   plugin_platform_interface: ^2.0.2
-
+  google_fonts: ^8.0.2
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -59,3 +59,19 @@ flutter:
   #
   # For details regarding fonts in packages, see
   # https://flutter.dev/to/font-from-package
+  fonts:
+    - family: OnePlusSans
+      fonts:
+        - asset: assets/fonts/OnePlusSans-Black.ttf
+        - asset: assets/fonts/OnePlusSans-BlackItalic.ttf
+        - asset: assets/fonts/OnePlusSans-Bold.ttf
+        - asset: assets/fonts/OnePlusSans-BoldItalic.ttf
+        - asset: assets/fonts/OnePlusSans-Italic.ttf
+        - asset: assets/fonts/OnePlusSans-Light.ttf
+        - asset: assets/fonts/OnePlusSans-LightItalic.ttf
+        - asset: assets/fonts/OnePlusSans-Medium.ttf
+        - asset: assets/fonts/OnePlusSans-MediumItalic.ttf
+        - asset: assets/fonts/OnePlusSans-Regular.ttf
+        - asset: assets/fonts/OnePlusSans-Thin.ttf
+        - asset: assets/fonts/OnePlusSans-ThinItalic.ttf
+          weight: 700

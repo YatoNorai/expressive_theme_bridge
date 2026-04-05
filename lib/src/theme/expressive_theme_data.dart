@@ -236,7 +236,7 @@ extension ExpressiveThemeVariantX on ExpressiveThemeVariant {
         surfaceTintColor: scheme.surfaceTint,
         elevation: components.appBarElevation,
         centerTitle: false,
-        scrolledUnderElevation: components.appBarElevation + 1,
+        scrolledUnderElevation: components.appBarElevation,
         titleTextStyle: text.titleLarge?.copyWith(
           color: scheme.onSurface,
           fontWeight: FontWeight.w700,
@@ -250,7 +250,7 @@ extension ExpressiveThemeVariantX on ExpressiveThemeVariant {
         elevation: 10/* components.cardElevation */,
         
         shape: cardShape,
-        margin: EdgeInsets.all(tokens.spacing8),
+        margin: EdgeInsets.all(tokens.spacing1),
         clipBehavior: Clip.antiAlias,
       ),
       buttonTheme: ButtonThemeData(
@@ -448,6 +448,7 @@ extension ExpressiveThemeVariantX on ExpressiveThemeVariant {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(components.listTileRadius),
         ),
+        
         contentPadding: EdgeInsets.symmetric(
           horizontal: tokens.spacing16,
           vertical: tokens.spacing4,
@@ -538,6 +539,7 @@ extension ExpressiveThemeVariantX on ExpressiveThemeVariant {
                   : null;
 
       return TextStyle(
+        fontFamily: 'OnePlusSans',
         color: parsedColor ?? fallbackColor,
         fontSize: (item['fontSize'] as num?)?.toDouble(),
         fontWeight: _fontWeight(item['fontWeight'] as String?),

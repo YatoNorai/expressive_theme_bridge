@@ -16,6 +16,7 @@ class ExpressiveThemeTokens extends ThemeExtension<ExpressiveThemeTokens> {
     required this.elevation3,
     required this.elevation4,
     required this.elevation5,
+    required this.spacing1,
     required this.spacing4,
     required this.spacing8,
     required this.spacing12,
@@ -41,6 +42,7 @@ class ExpressiveThemeTokens extends ThemeExtension<ExpressiveThemeTokens> {
   final double elevation4;
   final double elevation5;
 
+  final double spacing1;
   final double spacing4;
   final double spacing8;
   final double spacing12;
@@ -66,6 +68,7 @@ class ExpressiveThemeTokens extends ThemeExtension<ExpressiveThemeTokens> {
       elevation3: 6,
       elevation4: 8,
       elevation5: 12,
+      spacing1: 1,
       spacing4: 4,
       spacing8: 8,
       spacing12: 12,
@@ -93,6 +96,7 @@ class ExpressiveThemeTokens extends ThemeExtension<ExpressiveThemeTokens> {
       elevation3: d('elevation3', 6),
       elevation4: d('elevation4', 8),
       elevation5: d('elevation5', 12),
+      spacing1: d('spacing1', 1),
       spacing4: d('spacing4', 4),
       spacing8: d('spacing8', 8),
       spacing12: d('spacing12', 12),
@@ -119,6 +123,7 @@ class ExpressiveThemeTokens extends ThemeExtension<ExpressiveThemeTokens> {
       'elevation3': elevation3,
       'elevation4': elevation4,
       'elevation5': elevation5,
+      'spacing1': spacing1,
       'spacing4': spacing4,
       'spacing8': spacing8,
       'spacing12': spacing12,
@@ -145,6 +150,7 @@ class ExpressiveThemeTokens extends ThemeExtension<ExpressiveThemeTokens> {
     double? elevation3,
     double? elevation4,
     double? elevation5,
+    double? spacing1,
     double? spacing4,
     double? spacing8,
     double? spacing12,
@@ -169,6 +175,7 @@ class ExpressiveThemeTokens extends ThemeExtension<ExpressiveThemeTokens> {
       elevation4: elevation4 ?? this.elevation4,
       elevation5: elevation5 ?? this.elevation5,
       spacing4: spacing4 ?? this.spacing4,
+      spacing1: spacing1 ?? this.spacing1,
       spacing8: spacing8 ?? this.spacing8,
       spacing12: spacing12 ?? this.spacing12,
       spacing16: spacing16 ?? this.spacing16,
@@ -196,6 +203,7 @@ class ExpressiveThemeTokens extends ThemeExtension<ExpressiveThemeTokens> {
       elevation3: lerpDouble(elevation3, other.elevation3, t) ?? elevation3,
       elevation4: lerpDouble(elevation4, other.elevation4, t) ?? elevation4,
       elevation5: lerpDouble(elevation5, other.elevation5, t) ?? elevation5,
+      spacing1: lerpDouble(spacing1, other.spacing1, t) ?? spacing1,
       spacing4: lerpDouble(spacing4, other.spacing4, t) ?? spacing4,
       spacing8: lerpDouble(spacing8, other.spacing8, t) ?? spacing8,
       spacing12: lerpDouble(spacing12, other.spacing12, t) ?? spacing12,
