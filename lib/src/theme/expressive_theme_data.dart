@@ -539,13 +539,13 @@ extension ExpressiveThemeVariantX on ExpressiveThemeVariant {
                   : null;
 
       return TextStyle(
-        fontFamily: 'OnePlusSans',
-        color: parsedColor ?? fallbackColor,
-        fontSize: (item['fontSize'] as num?)?.toDouble(),
-        fontWeight: _fontWeight(item['fontWeight'] as String?),
-        height: (item['height'] as num?)?.toDouble(),
-        letterSpacing: (item['letterSpacing'] as num?)?.toDouble(),
-      );
+                  fontFamily: 'OnePlusSans',
+                  color: parsedColor, // null = herda do contexto automaticamente
+                  fontSize: (item['fontSize'] as num?)?.toDouble(),
+                  fontWeight: _fontWeight(item['fontWeight'] as String?),
+                  height: (item['height'] as num?)?.toDouble().clamp(0.8, 3.0),
+                  letterSpacing: (item['letterSpacing'] as num?)?.toDouble().clamp(-2.0, 10.0),
+            );
     }
 
     return TextTheme(
