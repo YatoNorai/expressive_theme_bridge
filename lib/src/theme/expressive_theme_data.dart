@@ -442,7 +442,8 @@ extension ExpressiveThemeVariantX on ExpressiveThemeVariant {
       listTileTheme: ListTileThemeData(
         iconColor: scheme.onSurfaceVariant,
         textColor: scheme.onSurface,
-        tileColor: scheme.surfaceContainerHigh,
+        tileColor: Colors.transparent /* scheme.surfaceContainerHigh */,
+        
         enableFeedback: false,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(components.listTileRadius),
