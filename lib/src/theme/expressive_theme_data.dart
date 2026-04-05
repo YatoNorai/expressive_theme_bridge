@@ -447,10 +447,10 @@ extension ExpressiveThemeVariantX on ExpressiveThemeVariant {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(components.listTileRadius),
         ),
-        contentPadding: EdgeInsets.symmetric(
+        /* contentPadding: EdgeInsets.symmetric(
           horizontal: tokens.spacing16,
           vertical: tokens.spacing4,
-        ),
+        ), */
       ),
       progressIndicatorTheme: ProgressIndicatorThemeData(
         color: scheme.primary,
