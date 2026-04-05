@@ -528,7 +528,10 @@ extension ExpressiveThemeVariantX on ExpressiveThemeVariant {
 
   TextTheme _buildTextTheme(Map<String, Object?> map, ColorScheme scheme) {
     TextStyle style(String name, {required Color fallbackColor}) {
+      
       final item = Map<String, Object?>.from(map[name] as Map? ?? const <String, Object?>{});
+      debugPrint('[$name] height=${item['height']} fontSize=${item['fontSize']} letterSpacing=${item['letterSpacing']}');
+  
       final explicitColor = item['color'];
       final parsedColor = explicitColor is int
           ? Color(explicitColor)
@@ -537,15 +540,16 @@ extension ExpressiveThemeVariantX on ExpressiveThemeVariant {
               : explicitColor is String
                   ? _parseHexColor(explicitColor)
                   : null;
+final rawHeight = (item['height'] as num?)?.toDouble();
 
-      return TextStyle(
-                  fontFamily: 'OnePlusSans',
-                  color: parsedColor, // null = herda do contexto automaticamente
-                  fontSize: (item['fontSize'] as num?)?.toDouble(),
-                  fontWeight: _fontWeight(item['fontWeight'] as String?),
-                  height: (item['height'] as num?)?.toDouble().clamp(0.8, 3.0),
-                  letterSpacing: (item['letterSpacing'] as num?)?.toDouble().clamp(-2.0, 10.0),
-            );
+         return TextStyle(
+  fontFamily: 'OnePlusSans',
+  color: parsedColor,
+  fontSize: (item['fontSize'] as num?)?.toDouble(),
+  fontWeight: _fontWeight(item['fontWeight'] as String?),
+  height: null, // 👈 deixa o Flutter calcular, ignora o JSON
+  letterSpacing: (item['letterSpacing'] as num?)?.toDouble(),
+);
     }
 
     return TextTheme(
