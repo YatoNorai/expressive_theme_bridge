@@ -450,7 +450,7 @@ extension ExpressiveThemeVariantX on ExpressiveThemeVariant {
         ),
         
         contentPadding: EdgeInsets.symmetric(
-          horizontal: 0,//tokens.spacing16,
+          horizontal: tokens.spacing16,
           vertical:0, //tokens.spacing4,
         ),
       ),
