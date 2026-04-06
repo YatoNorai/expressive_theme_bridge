@@ -450,8 +450,8 @@ extension ExpressiveThemeVariantX on ExpressiveThemeVariant {
         ),
         
         contentPadding: EdgeInsets.symmetric(
-          horizontal: tokens.spacing16,
-          vertical: tokens.spacing4,
+          horizontal: 0,//tokens.spacing16,
+          vertical:0, //tokens.spacing4,
         ),
       ),
       progressIndicatorTheme: ProgressIndicatorThemeData(
