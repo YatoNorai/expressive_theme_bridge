@@ -267,7 +267,7 @@ extension ExpressiveThemeVariantX on ExpressiveThemeVariant {
           shape: roundedMedium,
           padding: EdgeInsets.symmetric(
             horizontal: tokens.spacing24,
-            vertical: tokens.spacing4,
+            vertical: tokens.spacing1,
           ),
         ),
       ),
