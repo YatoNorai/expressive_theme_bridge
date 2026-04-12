@@ -7,18 +7,15 @@ import 'expressive_theme_bridge_platform_interface.dart';
 import 'models/expressive_theme_snapshot.dart';
 
 class MethodChannelExpressiveThemeBridge extends ExpressiveThemeBridgePlatform {
+  // EventChannel subscription is deferred to the first successful
+  // getCurrentTheme() call. Subscribing in the constructor causes Flutter to
+  // log a noisy "Failed to open event stream" on devices that lack dynamic-color
+  // resources (some Android 12 OEM ROMs), because native onListen throws and
+  // Flutter reports it via FlutterError.reportError — bypassing any catchError
+  // attached to initialize().
   MethodChannelExpressiveThemeBridge({MethodChannel? methodChannel, EventChannel? eventChannel})
       : _methodChannel = methodChannel ?? const MethodChannel(_methodChannelName),
-        _eventChannel = eventChannel ?? const EventChannel(_eventChannelName) {
-    _eventsSubscription = _eventChannel.receiveBroadcastStream().listen((dynamic event) {
-      if (event is Map) {
-        final snapshot = ExpressiveThemeSnapshot.fromMap(Map<String, Object?>.from(event));
-        _snapshot = snapshot;
-        _isMaterialYouEnabled = snapshot.isMaterialYouEnabled;
-        notifyListeners();
-      }
-    }, onError: (_) {});
-  }
+        _eventChannel = eventChannel ?? const EventChannel(_eventChannelName);
 
   static const String _methodChannelName = 'expressive_theme_bridge/methods';
   static const String _eventChannelName = 'expressive_theme_bridge/events';
@@ -30,6 +27,23 @@ class MethodChannelExpressiveThemeBridge extends ExpressiveThemeBridgePlatform {
   ExpressiveThemeSnapshot? _snapshot;
   bool _isMaterialYouEnabled = false;
   bool _isDynamicColorSupported = false;
+  bool _eventsSubscribed = false;
+
+  void _subscribeToEventsIfNeeded() {
+    if (_eventsSubscribed) return;
+    _eventsSubscribed = true;
+    _eventsSubscription = _eventChannel.receiveBroadcastStream().listen(
+      (dynamic event) {
+        if (event is Map) {
+          final snapshot = ExpressiveThemeSnapshot.fromMap(Map<String, Object?>.from(event));
+          _snapshot = snapshot;
+          _isMaterialYouEnabled = snapshot.isMaterialYouEnabled;
+          notifyListeners();
+        }
+      },
+      onError: (_) {},
+    );
+  }
 
   @override
   ExpressiveThemeSnapshot? get snapshot => _snapshot;
@@ -54,6 +68,11 @@ class MethodChannelExpressiveThemeBridge extends ExpressiveThemeBridgePlatform {
     if (result == null) {
       throw StateError('Native theme snapshot returned null.');
     }
+    // Subscribe to live theme-change events only after the first successful
+    // native call. If getCurrentTheme() throws (unsupported device), this line
+    // is never reached, so the EventChannel is never opened and Flutter never
+    // logs "Failed to open event stream".
+    _subscribeToEventsIfNeeded();
     return ExpressiveThemeSnapshot.fromMap(result);
   }
 
